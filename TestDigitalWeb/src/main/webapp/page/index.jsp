@@ -14,7 +14,7 @@
     
 
     <!-- Bootstrap core CSS -->
-<link href="../assets/dist/css/bootstrap.min.css" rel="stylesheet">
+<link href="resources/assets/dist/css/bootstrap.min.css" rel="stylesheet">
 
     <style>
       .bd-placeholder-img {
@@ -49,13 +49,13 @@
       <div class="collapse navbar-collapse" id="navbarCollapse">
         <ul class="navbar-nav me-auto mb-2 mb-md-0">
           <li class="nav-item active">
-            <a class="nav-link" aria-current="page" href="clases.jsp">Clases</a>
+            <a class="nav-link" aria-current="page" href="class">Clases</a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="estudiantes.jsp">Estudiantes</a>
+            <a class="nav-link" href="student">Estudiantes</a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="estudianteclase.jsp">Estudiantes - Clases</a>
+            <a class="nav-link" href="studentclass.jsp">Estudiantes - Clases</a>
           </li>
         </ul>
        
@@ -79,7 +79,7 @@
 </footer>
 
 
-    <script src="../assets/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="resources/assets/dist/js/bootstrap.bundle.min.js"></script>
 
       
   </body>
