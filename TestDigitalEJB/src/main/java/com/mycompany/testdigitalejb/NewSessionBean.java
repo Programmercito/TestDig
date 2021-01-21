@@ -15,10 +15,10 @@ import javax.ejb.LocalBean;
 @LocalBean
 public class NewSessionBean {
 
-    public void businessMethod() {
+    public String businessMethod() {
+        return "result";
     }
 
     // Add business logic below. (Right-click in editor and choose
     // "Insert Code > Add Business Method")
-
 }
