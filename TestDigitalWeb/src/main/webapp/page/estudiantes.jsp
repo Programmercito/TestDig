@@ -43,17 +43,17 @@
             <!-- Fixed navbar -->
             <nav class="navbar navbar-expand-md navbar-dark fixed-top bg-dark">
                 <div class="container-fluid">
-                    <a class="navbar-brand" href="#">Sistema Test</a>
+                    <a class="navbar-brand" href="#">Test System</a>
                     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation">
                         <span class="navbar-toggler-icon"></span>
                     </button>
                     <div class="collapse navbar-collapse" id="navbarCollapse">
                         <ul class="navbar-nav me-auto mb-2 mb-md-0">
                             <li class="nav-item active">
-                                <a class="nav-link" aria-current="page" href="class">Clases</a>
+                                <a class="nav-link" aria-current="page" href="class">Class</a>
                             </li>
                             <li class="nav-item">
-                                <a class="nav-link" href="student">Estudiantes</a>
+                                <a class="nav-link" href="student">Students</a>
                             </li>
                             <li class="nav-item">
                                 <a class="nav-link" href="studentclass">Estudiantes - Clases</a>
@@ -93,7 +93,7 @@
                             <td><c:out value="${product.firstname}" /></td>
                             <td>
                                 <a title="edit" href="student?accion=modificar&id=${product.studentid}"><i class="fas fa-pen-alt"></i></a>
-                                <a title="Delete" href="student?accion=eliminar&id=${product.studentid}"><i class="fas fa-trash-alt"></i></a>
+                                <a title="Delete" href="javascript:confirmarget('you sure?','student?accion=eliminar&id=${product.studentid}')"><i class="fas fa-trash-alt"></i></a>
                                 <a title="View Class" href="student?accion=viewclass&id=${product.studentid}"><i class="fas fa-calendar-week"></i></a>
 
                             </td>
@@ -116,10 +116,10 @@
                             <label for="firstname">first name</label>
                             <input type="text" class="form-control" id="firstname" placeholder="Enter id" name="firstname">
                         </div>
-                        <button type="submit" class="btn btn-default">Submit</button>
+                        <button type="submit" class="btn btn-primary">Submit</button>
                     </form>
                 </div>
-
+                <hr>
                 <%} else if ("modificar".equals(request.getParameter("accion"))) {%> 
 
                 <div class="container">
@@ -137,7 +137,8 @@
                             <label for="firstname">first name</label>
                             <input type="text" class="form-control" id="firstname" placeholder="Enter id" name="firstname" value="${modificame.firstname}">
                         </div>
-                        <button type="submit" class="btn btn-default">Submit</button>
+                        <hr>
+                        <button type="submit" class="btn btn-primary">Submit</button>
                     </form>
                 </div>
 
@@ -163,7 +164,7 @@
                             <td><c:out value="${product.code}" /></td>
                             <td><c:out value="${product.title}" /></td>
                             <td><c:out value="${product.description}" /></td>
-                            <td><a title="Delete" href="student?accion=deleterel&student=${student.studentid}&class=${product.code}"><i class="fas fa-trash-alt"></i></a></td>
+                            <td><a title="Delete" href="javascript:confirmarget('you sure?','student?accion=deleterel&student=${student.studentid}&class=${product.code}')"><i class="fas fa-trash-alt"></i></a></td>
 
 
                         </tr>
@@ -187,7 +188,8 @@
                                 </c:forEach>
                             </select>
                         </div>
-                        <button type="submit" class="btn btn-default">Submit</button>
+                        <hr>
+                        <button type="submit" class="btn btn-primary">Submit</button>
                     </form>
                 </div>
 
@@ -206,6 +208,7 @@
 
 
         <script src="resources/assets/dist/js/bootstrap.bundle.min.js"></script>
+        <script src="resources/assets/custom.js"></script>
         <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.0/css/all.css" integrity="sha384-lZN37f5QGtY3VHgisS14W3ExzMWZxybE1SJSEsQp9S+oqd12jhcu+A56Ebc1zFSJ" crossorigin="anonymous">
 
     </body>

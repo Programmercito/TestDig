@@ -43,17 +43,17 @@
             <!-- Fixed navbar -->
             <nav class="navbar navbar-expand-md navbar-dark fixed-top bg-dark">
                 <div class="container-fluid">
-                    <a class="navbar-brand" href="#">Sistema Test</a>
+                    <a class="navbar-brand" href="#">Test System</a>
                     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation">
                         <span class="navbar-toggler-icon"></span>
                     </button>
                     <div class="collapse navbar-collapse" id="navbarCollapse">
                         <ul class="navbar-nav me-auto mb-2 mb-md-0">
                             <li class="nav-item active">
-                                <a class="nav-link" aria-current="page" href="class">Clases</a>
+                                <a class="nav-link" aria-current="page" href="class">Class</a>
                             </li>
                             <li class="nav-item">
-                                <a class="nav-link" href="student">Estudiantes</a>
+                                <a class="nav-link" href="student">Students</a>
                             </li>
                             <li class="nav-item">
                                 <a class="nav-link" href="studentclass">Estudiantes - Clases</a>
@@ -93,7 +93,7 @@
                             <td><c:out value="${product.description}" /></td>
                             <td>
                                 <a title="Edit" href="class?accion=modificar&id=${product.code}"><i class="fas fa-pen-alt"></i></a>
-                                <a title="Remove" href="class?accion=eliminar&id=${product.code}"><i class="fas fa-trash-alt"></i></a>
+                                <a title="Remove" href="javascript:confirmarget('you sure?','class?accion=eliminar&id=${product.code}')"><i class="fas fa-trash-alt"></i></a>
                                 <a title="View Students" href="class?accion=viewstudent&id=${product.code}"><i class="fas fa-calendar-week"></i></a>
 
                             </td>
@@ -116,7 +116,8 @@
                             <label for="description">description</label>
                             <input type="text" class="form-control" id="description" placeholder="Enter id" name="description">
                         </div>
-                        <button type="submit" class="btn btn-default">Submit</button>
+                        <hr>
+                        <button type="submit" class="btn btn-primary">Submit</button>
                     </form>
                 </div>
 
@@ -137,7 +138,8 @@
                             <label for="description">first name</label>
                             <input type="text" class="form-control" id="description" placeholder="Enter id" name="description" value="${modificame.description}">
                         </div>
-                        <button type="submit" class="btn btn-default">Submit</button>
+                        <hr>
+                        <button type="submit" class="btn btn-primary">Submit</button>
                     </form>
                 </div>
 
@@ -179,6 +181,7 @@
 
 
         <script src="resources/assets/dist/js/bootstrap.bundle.min.js"></script>
+        <script src="resources/assets/custom.js"></script>
         <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.0/css/all.css" integrity="sha384-lZN37f5QGtY3VHgisS14W3ExzMWZxybE1SJSEsQp9S+oqd12jhcu+A56Ebc1zFSJ" crossorigin="anonymous">
 
     </body>

@@ -42,17 +42,17 @@
             <!-- Fixed navbar -->
             <nav class="navbar navbar-expand-md navbar-dark fixed-top bg-dark">
                 <div class="container-fluid">
-                    <a class="navbar-brand" href="#">Sistema Test</a>
+                    <a class="navbar-brand" href="#">Test System</a>
                     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation">
                         <span class="navbar-toggler-icon"></span>
                     </button>
                     <div class="collapse navbar-collapse" id="navbarCollapse">
                         <ul class="navbar-nav me-auto mb-2 mb-md-0">
                             <li class="nav-item active">
-                                <a class="nav-link" aria-current="page" href="class">Clases</a>
+                                <a class="nav-link" aria-current="page" href="class">Class</a>
                             </li>
                             <li class="nav-item">
-                                <a class="nav-link" href="student">Estudiantes</a>
+                                <a class="nav-link" href="student">Students</a>
                             </li>
                             <li class="nav-item">
                                 <a class="nav-link" href="studentclass">Estudiantes - Clases</a>
@@ -81,7 +81,7 @@
 
 
         <script src="resources/assets/dist/js/bootstrap.bundle.min.js"></script>
-
+        <script src="resources/assets/custom.js"></script>
 
     </body>
 </html>

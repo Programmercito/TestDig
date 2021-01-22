@@ -43,17 +43,17 @@
             <!-- Fixed navbar -->
             <nav class="navbar navbar-expand-md navbar-dark fixed-top bg-dark">
                 <div class="container-fluid">
-                    <a class="navbar-brand" href="#">Sistema Test</a>
+                    <a class="navbar-brand" href="#">Test System</a>
                     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation">
                         <span class="navbar-toggler-icon"></span>
                     </button>
                     <div class="collapse navbar-collapse" id="navbarCollapse">
                         <ul class="navbar-nav me-auto mb-2 mb-md-0">
                             <li class="nav-item active">
-                                <a class="nav-link" aria-current="page" href="class">Clases</a>
+                                <a class="nav-link" aria-current="page" href="class">Class</a>
                             </li>
                             <li class="nav-item">
-                                <a class="nav-link" href="student">Estudiantes</a>
+                                <a class="nav-link" href="student">Students</a>
                             </li>
                             <li class="nav-item">
                                 <a class="nav-link" href="studentclass">Estudiantes - Clases</a>
@@ -69,7 +69,7 @@
         <main class="flex-shrink-0">
             <div class="container">
                 <hr>
-                <h1 class="mt-5">Busqueda</h1>
+                <h1 class="mt-5">Search</h1>
                 <% if (request.getParameter("accion") == null || "buscar".equals(request.getParameter("accion"))) {%> 
                 <div class="container">
                     <form method="GET" action="studentclass?accion=buscar">
@@ -109,10 +109,12 @@
                                     out.println(request.getParameter("description"));
                                 }%>" type="text" class="form-control" id="description" placeholder="Enter data" name="description">
                         </div>
-                        <button type="submit" class="btn btn-default">Buscar</button>
+                        <hr>
+                        <button type="submit" class="btn btn-primary">Search</button>
                     </form>
                 </div>
                 <table class="table">
+                    <thead>
                     <tr>
                         <td scope="col">Code Class</td>
                         <td scope="col">Title Class</td>
@@ -121,6 +123,7 @@
                         <td scope="col">First Name</td>
                         <td scope="col">Last Name</td>
                     </tr>
+                    </thead>
                     <c:set var = "codigo" value = ""/>
                     <c:forEach items="${busqueda}" var="bus">
                         <c:if test = "${codigo!=bus.code && bus.code!=null && bus.studentid!=null}">
@@ -191,6 +194,7 @@
 
 
         <script src="resources/assets/dist/js/bootstrap.bundle.min.js"></script>
+        <script src="resources/assets/custom.js"></script>
         <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.0/css/all.css" integrity="sha384-lZN37f5QGtY3VHgisS14W3ExzMWZxybE1SJSEsQp9S+oqd12jhcu+A56Ebc1zFSJ" crossorigin="anonymous">
 
     </body>
