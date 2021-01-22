@@ -71,8 +71,13 @@
                 <hr>
                 <h1 class="mt-5">Classes  
                     <a title="New" href="class?accion=nuevo"><i class="far fa-file"></i></a>
-
                 </h1>
+                <h5>
+                    <c:if test="${error!=null || error!=''}">
+                        <p class="text-danger">${error}</p>
+                    </c:if>
+                </h5>
+
                 <% if (request.getParameter("accion") == null || "grabarnuevo".equals(request.getParameter("accion")) || "grabarmod".equals(request.getParameter("accion")) || "eliminar".equals(request.getParameter("accion"))) {%> 
                 <table class="table">
                     <tr>

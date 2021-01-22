@@ -135,9 +135,9 @@
                         </c:if>
 
                         <tr>
-                            <td></td>
-                            <td></td>
-                            <td></td>     
+                            <td><c:out value="${bus.code}" /></td>
+                            <td><c:out value="${bus.title}" /></td>
+                            <td><c:out value="${bus.description}" /></td>     
                             <td><c:out value="${bus.studentid}" /></td>
                             <td><c:out value="${bus.firstname}" /></td>
                             <td><c:out value="${bus.lastname}" /></td>

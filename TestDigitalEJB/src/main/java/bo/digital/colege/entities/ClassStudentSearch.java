@@ -16,27 +16,29 @@ import javax.persistence.IdClass;
  * @author hered
  */
 @Entity
-@IdClass(SearchPK.class)
+
 public class ClassStudentSearch implements Serializable {
 
     @Id
-    @Column(name = "CODE", nullable = false, updatable = true, unique = true)
+    @Column(name = "ID")
+    private Long id;
+
+    @Column(name = "CODE")
     private Long code;
 
-    @Column(name = "TITLE", nullable = false, updatable = true)
+    @Column(name = "TITLE")
     private String title;
 
-    @Column(name = "DESCRIPTION", nullable = false, updatable = true)
+    @Column(name = "DESCRIPTION")
     private String description;
 
-    @Id
-    @Column(name = "STUDENTID", nullable = false, updatable = true, unique = true)
+    @Column(name = "STUDENTID")
     private Long studentid;
 
-    @Column(name = "LASTNAME", nullable = false, updatable = true)
+    @Column(name = "LASTNAME")
     private String lastname;
 
-    @Column(name = "FIRSTNAME", nullable = false, updatable = true)
+    @Column(name = "FIRSTNAME")
     private String firstname;
 
     /**
@@ -121,5 +123,19 @@ public class ClassStudentSearch implements Serializable {
      */
     public void setFirstname(String firstname) {
         this.firstname = firstname;
+    }
+
+    /**
+     * @return the id
+     */
+    public Long getId() {
+        return id;
+    }
+
+    /**
+     * @param id the id to set
+     */
+    public void setId(Long id) {
+        this.id = id;
     }
 }

@@ -71,8 +71,13 @@
                 <hr>
                 <h1 class="mt-5">Estudiantes  
                     <a title="New" href="student?accion=nuevo"><i class="far fa-file"></i></a>
-
                 </h1>
+                <h5>
+                    <c:if test="${error!=null || error!=''}">
+                        <p class="text-danger">${error}</p>
+                    </c:if>
+                </h5>
+
                 <% if (request.getParameter("accion") == null || "grabarnuevo".equals(request.getParameter("accion")) || "grabarmod".equals(request.getParameter("accion")) || "eliminar".equals(request.getParameter("accion"))) {%> 
                 <table class="table">
                     <tr>
@@ -159,7 +164,7 @@
                             <td><c:out value="${product.title}" /></td>
                             <td><c:out value="${product.description}" /></td>
                             <td><a title="Delete" href="student?accion=deleterel&student=${student.studentid}&class=${product.code}"><i class="fas fa-trash-alt"></i></a></td>
-                        
+
 
                         </tr>
                     </c:forEach>

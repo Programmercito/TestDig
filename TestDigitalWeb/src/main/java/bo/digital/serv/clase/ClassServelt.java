@@ -3,6 +3,7 @@ package bo.digital.serv.clase;
 import bo.digital.colege.dao.ClassDAO;
 import bo.digital.colege.entities.Class;
 import bo.digital.colege.entities.Estudent;
+import bo.digital.common.error.ProcessError;
 import java.io.IOException;
 import java.util.List;
 import javax.ejb.EJB;
@@ -37,7 +38,11 @@ public class ClassServelt extends HttpServlet {
             request.getRequestDispatcher("page/clases.jsp").forward(request, response);
         } else if ("eliminar".equals(type)) {
             Class estudito = bean.find(Long.parseLong(request.getParameter("id")));
-            bean.remove(estudito);
+            try {
+                bean.remove(estudito);
+            } catch (Exception ex) {
+                ProcessError.process(ex, request);
+            }
             List<Class> resultado = bean.loadAll();
             request.setAttribute("estudiantes", resultado);
             request.getRequestDispatcher("page/clases.jsp").forward(request, response);
@@ -57,7 +62,11 @@ public class ClassServelt extends HttpServlet {
             resultado.setCode(Long.parseLong(request.getParameter("code")));
             resultado.setTitle(request.getParameter("title"));
             resultado.setDescription(request.getParameter("description"));
-            bean.persist(resultado);
+            try {
+                bean.persist(resultado);
+            } catch (Exception ex) {
+                ProcessError.process(ex, request);
+            }
 
             List<Class> lista = bean.loadAll();
             request.setAttribute("estudiantes", lista);
@@ -67,7 +76,11 @@ public class ClassServelt extends HttpServlet {
             Class estudito = bean.find(Long.parseLong(request.getParameter("code")));
             estudito.setTitle(request.getParameter("title"));
             estudito.setDescription(request.getParameter("description"));
-            bean.update(estudito);
+            try {
+                bean.update(estudito);
+            } catch (Exception ex) {
+                ProcessError.process(ex, request);
+            }
 
             List<Class> lista = bean.loadAll();
             request.setAttribute("estudiantes", lista);

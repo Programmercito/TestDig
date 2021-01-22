@@ -6,9 +6,11 @@ import bo.digital.colege.entities.Estudent;
 import bo.digital.colege.entities.Class;
 import bo.digital.colege.dao.StudentsDAO;
 import bo.digital.colege.entities.ClassEstudent;
+import bo.digital.common.error.ProcessError;
 import java.io.IOException;
 import java.util.List;
 import javax.ejb.EJB;
+import javax.ejb.EJBException;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -45,10 +47,17 @@ public class EstudiantesServelt extends HttpServlet {
             request.getRequestDispatcher("page/estudiantes.jsp").forward(request, response);
         } else if ("eliminar".equals(type)) {
             Estudent estudito = bean.find(Long.parseLong(request.getParameter("id")));
-            bean.remove(estudito);
+
+            try {
+                bean.remove(estudito);
+            } catch (Exception ex) {
+                ProcessError.process(ex, request);
+            }
+
             List<Estudent> resultado = bean.loadAll();
             request.setAttribute("estudiantes", resultado);
             request.getRequestDispatcher("page/estudiantes.jsp").forward(request, response);
+
         } else if ("viewclass".equals(type)) {
             Estudent estudito = bean.find(Long.parseLong(request.getParameter("id")));
             request.setAttribute("student", estudito);
@@ -65,8 +74,11 @@ public class EstudiantesServelt extends HttpServlet {
             ClassEstudent relacion = new ClassEstudent();
             relacion.setCodeclass(Long.parseLong(request.getParameter("class")));
             relacion.setStudentid(Long.parseLong(request.getParameter("student")));
-            stuclass.remove(relacion);
-            
+            try {
+                stuclass.remove(relacion);
+            } catch (Exception ex) {
+                ProcessError.process(ex, request);
+            }
             Estudent stu = bean.find(Long.parseLong(request.getParameter("student")));
             request.setAttribute("student", stu);
             List<Class> resultado = bean.loadClass(stu.getStudentid());
@@ -82,27 +94,36 @@ public class EstudiantesServelt extends HttpServlet {
             resultado.setStudentid(Long.parseLong(request.getParameter("id")));
             resultado.setLastname(request.getParameter("lastname"));
             resultado.setFirstname(request.getParameter("firstname"));
-            bean.persist(resultado);
-
+            try {
+                bean.persist(resultado);
+            } catch (Exception ex) {
+                ProcessError.process(ex, request);
+            }
             List<Estudent> lista = bean.loadAll();
             request.setAttribute("estudiantes", lista);
-
             request.getRequestDispatcher("page/estudiantes.jsp").forward(request, response);
         } else if ("grabarmod".equals(type)) {
             Estudent estudito = bean.find(Long.parseLong(request.getParameter("id")));
             estudito.setLastname(request.getParameter("lastname"));
             estudito.setFirstname(request.getParameter("firstname"));
-            bean.update(estudito);
-
+            try {
+                bean.update(estudito);
+            } catch (Exception ex) {
+                ProcessError.process(ex, request);
+            }
             List<Estudent> lista = bean.loadAll();
             request.setAttribute("estudiantes", lista);
-
             request.getRequestDispatcher("page/estudiantes.jsp").forward(request, response);
         } else if ("grabarclass".equals(type)) {
             ClassEstudent estudito = new ClassEstudent();
             estudito.setStudentid(Long.parseLong(request.getParameter("id")));
             estudito.setCodeclass(Long.parseLong(request.getParameter("clase")));
-            stuclass.persist(estudito);
+
+            try {
+                stuclass.persist(estudito);
+            } catch (Exception ex) {
+                ProcessError.process(ex, request);
+            }
 
             Estudent stu = bean.find(Long.parseLong(request.getParameter("id")));
             request.setAttribute("student", stu);
