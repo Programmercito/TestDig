@@ -43,7 +43,7 @@
             <!-- Fixed navbar -->
             <nav class="navbar navbar-expand-md navbar-dark fixed-top bg-dark">
                 <div class="container-fluid">
-                    <a class="navbar-brand" href="#">Test System</a>
+                    <a class="navbar-brand" href="/TestDigitalWeb">Test System</a>
                     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation">
                         <span class="navbar-toggler-icon"></span>
                     </button>
@@ -146,7 +146,9 @@
 
                 <label for="id">Student</label>
                 <div class="container">
-                    <a title="New class" href="student?accion=nuevoclass&id=${student.studentid}"><i class="far fa-file"></i></a>
+                    <hr>
+                    <a title="New class" href="student?accion=nuevoclass&id=${student.studentid}"><i class="far fa-file"></i></a> ADD class to list
+                    <hr>
                     <div class="form-group">
                         <input type="text" disabled class="form-control" id="idx" placeholder="Enter id" name="idx" value="${student.studentid} - ${student.firstname} ${student.lastname}">
                     </div>
@@ -170,7 +172,7 @@
                         </tr>
                     </c:forEach>
                 </table>
-
+                <button id="back" class="btn btn-primary">back</button>
                 <%} else if ("nuevoclass".equals(request.getParameter("accion"))) {%> 
 
                 <div class="container">
