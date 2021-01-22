@@ -4,8 +4,12 @@
  */
 package com.mycompany.testdigitalejb;
 
+import bo.digital.colege.entities.Estudent;
+import bo.digital.hibernate.conf.HibernateUtil;
+import java.util.List;
 import javax.ejb.Stateless;
 import javax.ejb.LocalBean;
+import org.hibernate.Session;
 
 /**
  *
@@ -19,6 +23,9 @@ public class NewSessionBean {
         return "result";
     }
 
-    // Add business logic below. (Right-click in editor and choose
-    // "Insert Code > Add Business Method")
+    public List<Estudent> LoadAll() {
+        try (Session session = HibernateUtil.getSessionFactory().openSession()) {
+            return session.createNativeQuery("select * from student", Estudent.class).getResultList();
+        }
+    }
 }
