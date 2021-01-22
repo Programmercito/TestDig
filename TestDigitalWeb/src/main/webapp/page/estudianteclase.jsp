@@ -114,9 +114,9 @@
                 </div>
                 <table class="table">
                     <tr>
-                        <td scope="col">Code</td>
-                        <td scope="col">Title</td>
-                        <td scope="col">Description</td>
+                        <td scope="col">Code Class</td>
+                        <td scope="col">Title Class</td>
+                        <td scope="col">Description Class</td>
                         <td scope="col">Student ID</td>
                         <td scope="col">First Name</td>
                         <td scope="col">Last Name</td>
@@ -132,25 +132,17 @@
                                 <td></td>
                                 <td></td>     
                             </tr>
-                            <tr>
-                                <td></td>
-                                <td></td>
-                                <td></td>     
-                                <td><c:out value="${bus.studentid}" /></td>
-                                <td><c:out value="${bus.firstname}" /></td>
-                                <td><c:out value="${bus.lastname}" /></td>
-                            </tr>
                         </c:if>
-                        <c:if test = "${codigo==bus.code}">
-                            <tr>
-                                <td></td>
-                                <td></td>
-                                <td></td>     
-                                <td><c:out value="${bus.studentid}" /></td>
-                                <td><c:out value="${bus.firstname}" /></td>
-                                <td><c:out value="${bus.lastname}" /></td>
-                            </tr>
-                        </c:if>
+
+                        <tr>
+                            <td></td>
+                            <td></td>
+                            <td></td>     
+                            <td><c:out value="${bus.studentid}" /></td>
+                            <td><c:out value="${bus.firstname}" /></td>
+                            <td><c:out value="${bus.lastname}" /></td>
+                        </tr>
+
                         <c:set var = "codigo" value = "${bus.code}"/>
 
                     </c:forEach>
