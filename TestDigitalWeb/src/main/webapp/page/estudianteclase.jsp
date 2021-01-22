@@ -123,7 +123,7 @@
                     </tr>
                     <c:set var = "codigo" value = ""/>
                     <c:forEach items="${busqueda}" var="bus">
-                        <c:if test = "${codigo!=bus.code}">
+                        <c:if test = "${codigo!=bus.code && bus.code!=null && bus.studentid!=null}">
                             <tr>
                                 <td><c:out value="${bus.code}" /></td>
                                 <td><c:out value="${bus.title}" /></td>
@@ -132,16 +132,47 @@
                                 <td></td>
                                 <td></td>     
                             </tr>
+                            <tr>
+                                <td></td>
+                                <td></td>
+                                <td></td>     
+                                <td><c:out value="${bus.studentid}" /></td>
+                                <td><c:out value="${bus.firstname}" /></td>
+                                <td><c:out value="${bus.lastname}" /></td>
+                            </tr>
+                        </c:if>
+                        <c:if test = "${codigo==bus.code  && bus.code!=null && bus.studentid!=null}">
+                            <tr>
+                                <td></td>
+                                <td></td>
+                                <td></td>     
+                                <td><c:out value="${bus.studentid}" /></td>
+                                <td><c:out value="${bus.firstname}" /></td>
+                                <td><c:out value="${bus.lastname}" /></td>
+                            </tr>
+                        </c:if>
+                        <c:if test = "${codigo!=bus.code && bus.code!=null && bus.studentid==null}">
+                            <tr>
+                                <td><c:out value="${bus.code}" /></td>
+                                <td><c:out value="${bus.title}" /></td>
+                                <td><c:out value="${bus.description}" /></td>     
+                                <td>without students</td>
+                                <td></td>
+                                <td></td>     
+                            </tr>
+                        </c:if>
+                        <c:if test = "${bus.code==null && bus.studentid!=null}">
+                            <tr>
+                                <td>without class</td>
+                                <td></td>
+                                <td></td>     
+                                <td><c:out value="${bus.studentid}" /></td>
+                                <td><c:out value="${bus.firstname}" /></td>
+                                <td><c:out value="${bus.lastname}" /></td>
+                            </tr>
                         </c:if>
 
-                        <tr>
-                            <td><c:out value="${bus.code}" /></td>
-                            <td><c:out value="${bus.title}" /></td>
-                            <td><c:out value="${bus.description}" /></td>     
-                            <td><c:out value="${bus.studentid}" /></td>
-                            <td><c:out value="${bus.firstname}" /></td>
-                            <td><c:out value="${bus.lastname}" /></td>
-                        </tr>
+
 
                         <c:set var = "codigo" value = "${bus.code}"/>
 
