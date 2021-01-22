@@ -17,5 +17,6 @@
         <mapping class="bo.digital.colege.entities.Class"/>
         <mapping class="bo.digital.colege.entities.ClassEstudent"/>
         <mapping class="bo.digital.colege.entities.Estudent"/>
+        <mapping class="bo.digital.colege.entities.ClassStudentSearch"/>
     </session-factory>
 </hibernate-configuration>
