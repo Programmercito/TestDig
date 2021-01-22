@@ -1,6 +1,7 @@
 package bo.digital.serv.estudiantes;
 
 import bo.digital.colege.entities.Estudent;
+import bo.digital.colege.entities.Class;
 import bo.digital.colege.dao.StudentsDAO;
 import java.io.IOException;
 import java.util.List;
@@ -26,7 +27,7 @@ public class EstudiantesServelt extends HttpServlet {
         System.out.println("Inside Servlet");
         String type = request.getParameter("accion");
         if (type == null) {
-            List<Estudent> resultado = bean.LoadAll();
+            List<Estudent> resultado = bean.loadAll();
             request.setAttribute("estudiantes", resultado);
             request.getRequestDispatcher("page/estudiantes.jsp").forward(request, response);
         } else if ("nuevo".equals(type)) {
@@ -38,8 +39,14 @@ public class EstudiantesServelt extends HttpServlet {
         } else if ("eliminar".equals(type)) {
             Estudent estudito = bean.find(Long.parseLong(request.getParameter("id")));
             bean.remove(estudito);
-            List<Estudent> resultado = bean.LoadAll();
+            List<Estudent> resultado = bean.loadAll();
             request.setAttribute("estudiantes", resultado);
+            request.getRequestDispatcher("page/estudiantes.jsp").forward(request, response);
+        } else if ("viewclass".equals(type)) {
+            Estudent estudito = bean.find(Long.parseLong(request.getParameter("id")));
+            request.setAttribute("student", estudito);
+            List<Class> resultado = bean.loadClass(estudito.getStudentid());
+            request.setAttribute("clases", resultado);
             request.getRequestDispatcher("page/estudiantes.jsp").forward(request, response);
         }
     }
@@ -53,7 +60,7 @@ public class EstudiantesServelt extends HttpServlet {
             resultado.setFirstname(request.getParameter("firstname"));
             bean.persist(resultado);
 
-            List<Estudent> lista = bean.LoadAll();
+            List<Estudent> lista = bean.loadAll();
             request.setAttribute("estudiantes", lista);
 
             request.getRequestDispatcher("page/estudiantes.jsp").forward(request, response);
@@ -63,7 +70,7 @@ public class EstudiantesServelt extends HttpServlet {
             estudito.setFirstname(request.getParameter("firstname"));
             bean.update(estudito);
 
-            List<Estudent> lista = bean.LoadAll();
+            List<Estudent> lista = bean.loadAll();
             request.setAttribute("estudiantes", lista);
 
             request.getRequestDispatcher("page/estudiantes.jsp").forward(request, response);

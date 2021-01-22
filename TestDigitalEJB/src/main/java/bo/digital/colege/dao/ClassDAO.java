@@ -5,11 +5,13 @@
 package bo.digital.colege.dao;
 
 import bo.digital.colege.entities.Class;
+import bo.digital.colege.entities.Estudent;
 import bo.digital.hibernate.conf.HibernateUtil;
 import java.util.List;
 import javax.ejb.Stateless;
 import javax.ejb.LocalBean;
 import org.hibernate.Session;
+import org.hibernate.query.NativeQuery;
 
 /**
  *
@@ -50,9 +52,18 @@ public class ClassDAO {
         }
     }
 
-    public List<Class> LoadAll() {
+    public List<Class> loadAll() {
         try (Session session = HibernateUtil.getSessionFactory().openSession()) {
             return session.createNativeQuery("select * from class", Class.class).getResultList();
+        }
+    }
+
+    public List<Estudent> loadStudents(Long clas) {
+        try (Session session = HibernateUtil.getSessionFactory().openSession()) {
+            NativeQuery<Estudent> createNativeQuery = session.createNativeQuery("select * from student where studentid in (select student_id from class_students where code_class=?1 )", Estudent.class);
+            createNativeQuery.setParameter(1, clas);
+            return createNativeQuery.getResultList();
+
         }
     }
 }

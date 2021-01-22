@@ -70,7 +70,7 @@
             <div class="container">
                 <hr>
                 <h1 class="mt-5">Classes  
-                    <a href="class?accion=nuevo"><i class="far fa-file"></i></a>
+                    <a title="New" href="class?accion=nuevo"><i class="far fa-file"></i></a>
 
                 </h1>
                 <% if (request.getParameter("accion") == null || "grabarnuevo".equals(request.getParameter("accion")) || "grabarmod".equals(request.getParameter("accion")) || "eliminar".equals(request.getParameter("accion"))) {%> 
@@ -87,15 +87,16 @@
                             <td><c:out value="${product.title}" /></td>
                             <td><c:out value="${product.description}" /></td>
                             <td>
-                                <a href="class?accion=modificar&id=${product.code}"><i class="fas fa-pen-alt"></i></a>
-                                <a href="class?accion=eliminar&id=${product.code}"><i class="fas fa-trash-alt"></i></a>
+                                <a title="Edit" href="class?accion=modificar&id=${product.code}"><i class="fas fa-pen-alt"></i></a>
+                                <a title="Remove" href="class?accion=eliminar&id=${product.code}"><i class="fas fa-trash-alt"></i></a>
+                                <a title="View Students" href="class?accion=viewstudent&id=${product.code}"><i class="fas fa-calendar-week"></i></a>
 
                             </td>
                         </tr>
                     </c:forEach>
                 </table>
                 <%} else if ("nuevo".equals(request.getParameter("accion"))) {%> 
-                
+
                 <div class="container">
                     <form method="POST" action="class?accion=grabarnuevo">
                         <div class="form-group">
@@ -115,7 +116,7 @@
                 </div>
 
                 <%} else if ("modificar".equals(request.getParameter("accion"))) {%> 
-                
+
                 <div class="container">
                     <form method="POST" action="class?accion=grabarmod">
                         <div class="form-group">
@@ -134,6 +135,31 @@
                         <button type="submit" class="btn btn-default">Submit</button>
                     </form>
                 </div>
+
+                <%} else if ("viewstudent".equals(request.getParameter("accion"))) {%> 
+                <label for="id">Class</label>
+                <div class="container">
+                    <div class="form-group">
+                        <input type="text" disabled class="form-control" id="idx" placeholder="Enter id" name="idx" value="${clase.code} - ${clase.title}">
+                    </div>
+                </div>
+                <label for="id">Students</label>
+
+                <table class="table">
+                    <tr>
+                        <td scope="col">Id</td>
+                        <td scope="col">Last Name</td>
+                        <td scope="col">First Name</td>
+                    </tr>
+                    <c:forEach items="${estudiantes}" var="product">
+                        <tr>
+                            <td><c:out value="${product.studentid}" /></td>
+                            <td><c:out value="${product.lastname}" /></td>
+                            <td><c:out value="${product.firstname}" /></td>
+                        </tr>
+                    </c:forEach>
+                </table>
+
 
                 <%}%> 
 
