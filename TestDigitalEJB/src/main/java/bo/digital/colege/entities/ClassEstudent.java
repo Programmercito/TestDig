@@ -16,7 +16,7 @@ import javax.persistence.Table;
 public class ClassEstudent {
 
     @Id
-    @Column(name = "CODE_CLASS", nullable = false, updatable = true, unique = true)
+    @Column(name = "CODE_CLASS", nullable = false, updatable = true)
     private Long codeclass;
     
     @Id

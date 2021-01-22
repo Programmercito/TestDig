@@ -140,6 +140,7 @@
 
                 <label for="id">Student</label>
                 <div class="container">
+                    <a title="New class" href="student?accion=nuevoclass&id=${student.studentid}"><i class="far fa-file"></i></a>
                     <div class="form-group">
                         <input type="text" disabled class="form-control" id="idx" placeholder="Enter id" name="idx" value="${student.studentid} - ${student.firstname} ${student.lastname}">
                     </div>
@@ -150,16 +151,40 @@
                         <td scope="col">Code</td>
                         <td scope="col">title</td>
                         <td scope="col">Description</td>
+                        <td scope="col">Options</td>
                     </tr>
                     <c:forEach items="${clases}" var="product">
                         <tr>
                             <td><c:out value="${product.code}" /></td>
                             <td><c:out value="${product.title}" /></td>
                             <td><c:out value="${product.description}" /></td>
+                            <td><a title="Delete" href="student?accion=deleterel&student=${student.studentid}&class=${product.code}"><i class="fas fa-trash-alt"></i></a></td>
+                        
+
                         </tr>
                     </c:forEach>
                 </table>
 
+                <%} else if ("nuevoclass".equals(request.getParameter("accion"))) {%> 
+
+                <div class="container">
+                    <form method="POST" action="student?accion=grabarclass">
+                        <div class="form-group">
+                            <label for="id">Student</label>
+                            <input type="text" disabled class="form-control" id="idx" placeholder="Enter id" name="idx" value="${student.studentid} - ${student.firstname} ${student.lastname}">
+                            <input type="hidden"  class="form-control" id="id" placeholder="Enter id" name="id" value="${student.studentid}">
+                        </div>
+                        <div class="form-group">
+                            <label for="class">Class</label>
+                            <select name="clase"  class="form-select">
+                                <c:forEach items="${clases}" var="product">
+                                    <option value='${product.code}'>${product.code} ${product.title}-${product.description}</option>
+                                </c:forEach>
+                            </select>
+                        </div>
+                        <button type="submit" class="btn btn-default">Submit</button>
+                    </form>
+                </div>
 
 
                 <%}%> 

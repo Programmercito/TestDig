@@ -13,11 +13,12 @@ import javax.persistence.Id;
  *
  * @author hered
  */
-class ClasStudentPK implements Serializable{
+public class ClasStudentPK implements Serializable {
 
-    @Column(name = "CODE_CLASS", nullable = false, updatable = true, unique = true)
+    @Id
+    @Column(name = "CODE_CLASS", nullable = false, updatable = true)
     private Long codeclass;
-
+    @Id
     @Column(name = "STUDENT_ID", nullable = false, updatable = true)
     private Long studentid;
 

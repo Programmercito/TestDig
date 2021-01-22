@@ -1,8 +1,11 @@
 package bo.digital.serv.estudiantes;
 
+import bo.digital.colege.dao.ClassDAO;
+import bo.digital.colege.dao.ClassStudentDAO;
 import bo.digital.colege.entities.Estudent;
 import bo.digital.colege.entities.Class;
 import bo.digital.colege.dao.StudentsDAO;
+import bo.digital.colege.entities.ClassEstudent;
 import java.io.IOException;
 import java.util.List;
 import javax.ejb.EJB;
@@ -22,6 +25,10 @@ public class EstudiantesServelt extends HttpServlet {
     private static final long serialVersionUID = 1L;
     @EJB
     StudentsDAO bean;
+    @EJB
+    ClassDAO ejbclass;
+    @EJB
+    ClassStudentDAO stuclass;
 
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         System.out.println("Inside Servlet");
@@ -48,6 +55,23 @@ public class EstudiantesServelt extends HttpServlet {
             List<Class> resultado = bean.loadClass(estudito.getStudentid());
             request.setAttribute("clases", resultado);
             request.getRequestDispatcher("page/estudiantes.jsp").forward(request, response);
+        } else if ("nuevoclass".equals(type)) {
+            Estudent estudito = bean.find(Long.parseLong(request.getParameter("id")));
+            request.setAttribute("student", estudito);
+            List<Class> resultado = ejbclass.loadAll();
+            request.setAttribute("clases", resultado);
+            request.getRequestDispatcher("page/estudiantes.jsp").forward(request, response);
+        } else if ("deleterel".equals(type)) {
+            ClassEstudent relacion = new ClassEstudent();
+            relacion.setCodeclass(Long.parseLong(request.getParameter("class")));
+            relacion.setStudentid(Long.parseLong(request.getParameter("student")));
+            stuclass.remove(relacion);
+            
+            Estudent stu = bean.find(Long.parseLong(request.getParameter("student")));
+            request.setAttribute("student", stu);
+            List<Class> resultado = bean.loadClass(stu.getStudentid());
+            request.setAttribute("clases", resultado);
+            request.getRequestDispatcher("page/estudiantes.jsp?accion=viewclass").forward(request, response);
         }
     }
 
@@ -74,6 +98,17 @@ public class EstudiantesServelt extends HttpServlet {
             request.setAttribute("estudiantes", lista);
 
             request.getRequestDispatcher("page/estudiantes.jsp").forward(request, response);
+        } else if ("grabarclass".equals(type)) {
+            ClassEstudent estudito = new ClassEstudent();
+            estudito.setStudentid(Long.parseLong(request.getParameter("id")));
+            estudito.setCodeclass(Long.parseLong(request.getParameter("clase")));
+            stuclass.persist(estudito);
+
+            Estudent stu = bean.find(Long.parseLong(request.getParameter("id")));
+            request.setAttribute("student", stu);
+            List<Class> resultado = bean.loadClass(stu.getStudentid());
+            request.setAttribute("clases", resultado);
+            request.getRequestDispatcher("page/estudiantes.jsp?accion=viewclass").forward(request, response);
         }
 
     }
