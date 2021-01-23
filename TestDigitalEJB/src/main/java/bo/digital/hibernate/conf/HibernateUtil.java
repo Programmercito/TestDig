@@ -9,7 +9,7 @@ import org.hibernate.boot.registry.StandardServiceRegistryBuilder;
 
 /**
  *
- * @author @programmercito
+ * @author programmercito
  */
 public class HibernateUtil {
     private static StandardServiceRegistry registry;
