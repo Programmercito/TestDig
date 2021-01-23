@@ -55,7 +55,7 @@
                                 <a class="nav-link" href="student">Students</a>
                             </li>
                             <li class="nav-item">
-                                <a class="nav-link" href="studentclass">Estudiantes - Clases</a>
+                                <a class="nav-link" href="studentclass">Students - Class</a>
                             </li>
                         </ul>
 

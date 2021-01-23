@@ -4,13 +4,17 @@ function confirmarget(mensaje, url) {
         window.location = url;
     }
 }
-function goPrevStudent(){ 
-   window.location ="/TestDigitalWeb/student";
+function goPrevStudent() {
+    window.location = "/TestDigitalWeb/student";
 }
-function goPrevClass(){ 
-   window.location ="/TestDigitalWeb/class";
+function goPrevClass() {
+    window.location = "/TestDigitalWeb/class";
 }
 var btn = document.getElementById("backstudent");
-btn.addEventListener("click", goPrevStudent);
+if (btn != null) {
+    btn.addEventListener("click", goPrevStudent);
+}
 var btn = document.getElementById("backclass");
-btn.addEventListener("click", goPrevClass);
+if (btn != null) {
+    btn.addEventListener("click", goPrevClass);
+}
