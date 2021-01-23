@@ -172,7 +172,7 @@
                         </tr>
                     </c:forEach>
                 </table>
-                <button id="back" class="btn btn-primary">back</button>
+                <button id="backstudent" class="btn btn-primary">back</button>
                 <%} else if ("nuevoclass".equals(request.getParameter("accion"))) {%> 
 
                 <div class="container">

@@ -166,7 +166,7 @@
                         </tr>
                     </c:forEach>
                 </table>
-                <button id="back" class="btn btn-primary">back</button>
+                <button id="backclass" class="btn btn-primary">back</button>
 
 
                 <%}%> 

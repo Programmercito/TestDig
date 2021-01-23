@@ -4,8 +4,13 @@ function confirmarget(mensaje, url) {
         window.location = url;
     }
 }
-function goPrev(){ 
-   window.history.back() 
+function goPrevStudent(){ 
+   window.location ="/TestDigitalWeb/student";
 }
-var btn = document.getElementById("back");
-btn.addEventListener("click", goPrev);
+function goPrevClass(){ 
+   window.location ="/TestDigitalWeb/class";
+}
+var btn = document.getElementById("backstudent");
+btn.addEventListener("click", goPrevStudent);
+var btn = document.getElementById("backclass");
+btn.addEventListener("click", goPrevClass);
