@@ -40,48 +40,62 @@ public class EstudiantesController {
             ModelMap model) {
 
         String type = accion;
-        if (type == null) {
+        if (null == type) {
             List<Estudent> resultado = bean.loadAll();
             model.addAttribute("estudiantes", resultado);
-        } else if ("nuevo".equals(type)) {
-        } else if ("modificar".equals(type)) {
-            Estudent estudito = bean.find(Long.parseLong(id));
-            model.addAttribute("modificame", estudito);
-        } else if ("eliminar".equals(type)) {
-            Estudent estudito = bean.find(Long.parseLong(id));
-
-            try {
-                bean.remove(estudito);
-            } catch (Exception ex) {
-                ProcessError.process(ex, model);
-            }
-
-            List<Estudent> resultado = bean.loadAll();
-            model.addAttribute("estudiantes", resultado);
-
-        } else if ("viewclass".equals(type)) {
-            Estudent estudito = bean.find(Long.parseLong(id));
-            model.addAttribute("student", estudito);
-            List<bo.digital.colege.entities.Class> resultado = bean.loadClass(estudito.getStudentid());
-            model.addAttribute("clases", resultado);
-        } else if ("nuevoclass".equals(type)) {
-            Estudent estudito = bean.find(Long.parseLong(id));
-            model.addAttribute("student", estudito);
-            List<bo.digital.colege.entities.Class> resultado = ejbclass.loadAll();
-            model.addAttribute("clases", resultado);
-        } else if ("deleterel".equals(type)) {
-            ClassEstudent relacion = new ClassEstudent();
-            relacion.setCodeclass(Long.parseLong(classe));
-            relacion.setStudentid(Long.parseLong(student));
-            try {
-                stuclass.remove(relacion);
-            } catch (Exception ex) {
-                ProcessError.process(ex, model);
-            }
-            Estudent stu = bean.find(Long.parseLong(student));
-            model.addAttribute("student", stu);
-            List<bo.digital.colege.entities.Class> resultado = bean.loadClass(stu.getStudentid());
-            model.addAttribute("clases", resultado);
+        } else switch (type) {
+            case "nuevo":
+                break;
+            case "modificar":
+                {
+                    Estudent estudito = bean.find(Long.parseLong(id));
+                    model.addAttribute("modificame", estudito);
+                    break;
+                }
+            case "eliminar":
+                {
+                    Estudent estudito = bean.find(Long.parseLong(id));
+                    try {
+                        bean.remove(estudito);
+                    } catch (Exception ex) {
+                        ProcessError.process(ex, model);
+                    }       List<Estudent> resultado = bean.loadAll();
+                    model.addAttribute("estudiantes", resultado);
+                    break;
+                }
+            case "viewclass":
+                {
+                    Estudent estudito = bean.find(Long.parseLong(id));
+                    model.addAttribute("student", estudito);
+                    List<bo.digital.colege.entities.Class> resultado = bean.loadClass(estudito.getStudentid());
+                    model.addAttribute("clases", resultado);
+                    break;
+                }
+            case "nuevoclass":
+                {
+                    Estudent estudito = bean.find(Long.parseLong(id));
+                    model.addAttribute("student", estudito);
+                    List<bo.digital.colege.entities.Class> resultado = ejbclass.loadAll();
+                    model.addAttribute("clases", resultado);
+                    break;
+                }
+            case "deleterel":
+                {
+                    ClassEstudent relacion = new ClassEstudent();
+                    relacion.setCodeclass(Long.parseLong(classe));
+                    relacion.setStudentid(Long.parseLong(student));
+                    try {
+                        stuclass.remove(relacion);
+                    } catch (Exception ex) {
+                        ProcessError.process(ex, model);
+                    }       Estudent stu = bean.find(Long.parseLong(student));
+                    model.addAttribute("student", stu);
+                    List<bo.digital.colege.entities.Class> resultado = bean.loadClass(stu.getStudentid());
+                    model.addAttribute("clases", resultado);
+                    break;
+                }
+            default:
+                break;
         }
         return "estudiantes";
     }
@@ -94,44 +108,48 @@ public class EstudiantesController {
             @RequestParam(required = false, name = "clase") String clase,
             ModelMap model) {
         String type = accion;
-        if ("grabarnuevo".equals(type)) {
-            Estudent resultado = new Estudent();
-            resultado.setStudentid(Long.parseLong(id));
-            resultado.setLastname(lastname);
-            resultado.setFirstname(firstname);
-            try {
-                bean.persist(resultado);
-            } catch (Exception ex) {
-                ProcessError.process(ex, model);
-            }
-            List<Estudent> lista = bean.loadAll();
-            model.addAttribute("estudiantes", lista);
-        } else if ("grabarmod".equals(type)) {
-            Estudent estudito = bean.find(Long.parseLong(id));
-            estudito.setLastname(lastname);
-            estudito.setFirstname(firstname);
-            try {
-                bean.update(estudito);
-            } catch (Exception ex) {
-                ProcessError.process(ex, model);
-            }
-            List<Estudent> lista = bean.loadAll();
-            model.addAttribute("estudiantes", lista);
-        } else if ("grabarclass".equals(type)) {
-            ClassEstudent estudito = new ClassEstudent();
-            estudito.setStudentid(Long.parseLong(id));
-            estudito.setCodeclass(Long.parseLong(clase));
-
-            try {
-                stuclass.persist(estudito);
-            } catch (Exception ex) {
-                ProcessError.process(ex, model);
-            }
-
-            Estudent stu = bean.find(Long.parseLong(id));
-            model.addAttribute("student", stu);
-            List<bo.digital.colege.entities.Class> resultado = bean.loadClass(stu.getStudentid());
-            model.addAttribute("clases", resultado);
+        if (null != type) switch (type) {
+            case "grabarnuevo":{
+                Estudent resultado = new Estudent();
+                resultado.setStudentid(Long.parseLong(id));
+                resultado.setLastname(lastname);
+                resultado.setFirstname(firstname);
+                try {
+                    bean.persist(resultado);
+                } catch (Exception ex) {
+                    ProcessError.process(ex, model);
+                }       List<Estudent> lista = bean.loadAll();
+                model.addAttribute("estudiantes", lista);
+                    break;
+                }
+            case "grabarmod":{
+                Estudent estudito = bean.find(Long.parseLong(id));
+                estudito.setLastname(lastname);
+                estudito.setFirstname(firstname);
+                try {
+                    bean.update(estudito);
+                } catch (Exception ex) {
+                    ProcessError.process(ex, model);
+                }       List<Estudent> lista = bean.loadAll();
+                model.addAttribute("estudiantes", lista);
+                    break;
+                }
+            case "grabarclass":{
+                ClassEstudent estudito = new ClassEstudent();
+                estudito.setStudentid(Long.parseLong(id));
+                estudito.setCodeclass(Long.parseLong(clase));
+                try {
+                    stuclass.persist(estudito);
+                } catch (Exception ex) {
+                    ProcessError.process(ex, model);
+                }       Estudent stu = bean.find(Long.parseLong(id));
+                model.addAttribute("student", stu);
+                List<bo.digital.colege.entities.Class> resultado = bean.loadClass(stu.getStudentid());
+                model.addAttribute("clases", resultado);
+                    break;
+                }
+            default:
+                break;
         }
         return "estudiantes";
     }
