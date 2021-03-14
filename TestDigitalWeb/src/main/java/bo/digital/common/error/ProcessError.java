@@ -2,6 +2,7 @@ package bo.digital.common.error;
 
 import javax.ejb.EJBException;
 import javax.servlet.http.HttpServletRequest;
+import org.springframework.ui.ModelMap;
 
 /**
  *
@@ -9,7 +10,7 @@ import javax.servlet.http.HttpServletRequest;
  */
 public class ProcessError {
 
-    public static void process(Exception ex, HttpServletRequest request) {
+    public static void process(Exception ex, ModelMap request) {
         if (ex instanceof EJBException) {
             String mensaje = "";
             try {
@@ -18,7 +19,7 @@ public class ProcessError {
             } catch (Exception e) {
                 mensaje = "Error inesperado intente de nuevo";
             }
-            request.setAttribute("error", mensaje);
+            request.addAttribute("error", mensaje);
         } else {
             throw new RuntimeException(ex);
         }
