@@ -115,14 +115,14 @@
                 </div>
                 <table class="table">
                     <thead>
-                    <tr>
-                        <td scope="col">Code Class</td>
-                        <td scope="col">Title Class</td>
-                        <td scope="col">Description Class</td>
-                        <td scope="col">Student ID</td>
-                        <td scope="col">First Name</td>
-                        <td scope="col">Last Name</td>
-                    </tr>
+                        <tr>
+                            <td scope="col">Code Class</td>
+                            <td scope="col">Title Class</td>
+                            <td scope="col">Description Class</td>
+                            <td scope="col">Student ID</td>
+                            <td scope="col">First Name</td>
+                            <td scope="col">Last Name</td>
+                        </tr>
                     </thead>
                     <c:set var = "codigo" value = ""/>
                     <c:forEach items="${busqueda}" var="bus">

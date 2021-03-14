@@ -12,7 +12,7 @@ import org.hibernate.query.NativeQuery;
 
 /**
  *
- * @author martin
+ * @author programmercito
  */
 @Stateless
 @LocalBean

@@ -5,14 +5,12 @@ import java.io.Serializable;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Id;
-import javax.persistence.IdClass;
 
 /**
  *
- * @author hered
+ * @author programmercito
  */
 @Entity
-
 public class ClassStudentSearch implements Serializable {
 
     @Id
