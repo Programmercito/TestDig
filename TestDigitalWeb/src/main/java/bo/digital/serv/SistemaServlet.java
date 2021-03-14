@@ -11,7 +11,7 @@ import javax.servlet.http.HttpServletResponse;
  *
  * @author hered
  */
-@WebServlet("/")
+@WebServlet("/yano")
 public class SistemaServlet extends HttpServlet {
 
     private static final long serialVersionUID = 1L;
