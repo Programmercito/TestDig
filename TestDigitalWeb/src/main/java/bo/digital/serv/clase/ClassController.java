@@ -38,10 +38,10 @@ public class ClassController {
 
             case ("grabarnuevo"):
                 bo.digital.colege.entities.Class resultado = new bo.digital.colege.entities.Class();
-                resultado.setCode(Long.parseLong(code));
-                resultado.setTitle(title);
-                resultado.setDescription(description);
                 try {
+                    resultado.setCode(Long.parseLong(code));
+                    resultado.setTitle(title);
+                    resultado.setDescription(description);
                     bean.persist(resultado);
                 } catch (Exception ex) {
                     ProcessError.process(ex, model);

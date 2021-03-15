@@ -115,10 +115,10 @@ public class EstudiantesController {
             switch (type) {
                 case "grabarnuevo": {
                     Estudent resultado = new Estudent();
-                    resultado.setStudentid(Long.parseLong(id));
-                    resultado.setLastname(lastname);
-                    resultado.setFirstname(firstname);
                     try {
+                        resultado.setStudentid(Long.parseLong(id));
+                        resultado.setLastname(lastname);
+                        resultado.setFirstname(firstname);
                         bean.persist(resultado);
                     } catch (Exception ex) {
                         ProcessError.process(ex, model);
