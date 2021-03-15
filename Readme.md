@@ -42,11 +42,11 @@ all the logic of the application validations and other
 
 ## Features
 
-Create/Edit/Delete Student
-Create/Edit/Delete Class
-Browse list of all Student
-Browse list of all Classes
-In Students add relation with class
-View all Students assigned to a Class
-View all Classes assigned to a Student
-Search Student/Classes by available fields/associations and list
+* Create/Edit/Delete Student
+* Create/Edit/Delete Class
+* Browse list of all Student
+* Browse list of all Classes
+* In Students add relation with class
+* View all Students assigned to a Class
+* View all Classes assigned to a Student
+* Search Student/Classes by available fields/associations and list
