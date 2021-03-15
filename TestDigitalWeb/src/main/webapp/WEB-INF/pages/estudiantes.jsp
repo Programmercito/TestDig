@@ -69,7 +69,7 @@
         <main class="flex-shrink-0">
             <div class="container">
                 <hr>
-                <h1 class="mt-5">Estudiantes  
+                <h1 class="mt-5">Students  
                     <a title="New" href="student?accion=nuevo"><i class="far fa-file"></i></a>
                 </h1>
                 <h5>
@@ -78,7 +78,11 @@
                     </c:if>
                 </h5>
 
-                <% if (request.getParameter("accion") == null || "grabarnuevo".equals(request.getParameter("accion")) || "grabarmod".equals(request.getParameter("accion")) || "eliminar".equals(request.getParameter("accion"))) {%> 
+                <% if (request.getAttribute("accion") == null 
+                        || "grabarnuevo".equals(request.getAttribute("accion")) 
+                        || "grabarmod".equals(request.getAttribute("accion")) 
+                        || "eliminar".equals(request.getAttribute("accion")) 
+                       ) {%>  
                 <table class="table">
                     <tr>
                         <td scope="col">Id</td>
@@ -100,7 +104,7 @@
                         </tr>
                     </c:forEach>
                 </table>
-                <%} else if ("nuevo".equals(request.getParameter("accion"))) {%> 
+                <%} else if ("nuevo".equals(request.getAttribute("accion"))) {%> 
 
                 <div class="container">
                     <form method="POST" action="student?accion=grabarnuevo">
@@ -120,7 +124,7 @@
                     </form>
                 </div>
                 <hr>
-                <%} else if ("modificar".equals(request.getParameter("accion"))) {%> 
+                <%} else if ("modificar".equals(request.getAttribute("accion"))) {%> 
 
                 <div class="container">
                     <form method="POST" action="student?accion=grabarmod">
@@ -142,7 +146,7 @@
                     </form>
                 </div>
 
-                <%} else if ("viewclass".equals(request.getParameter("accion"))) {%> 
+                <%} else if ("viewclass".equals(request.getAttribute("accion"))) {%> 
 
                 <label for="id">Student</label>
                 <div class="container">
@@ -173,7 +177,7 @@
                     </c:forEach>
                 </table>
                 <button id="backstudent" class="btn btn-primary">back</button>
-                <%} else if ("nuevoclass".equals(request.getParameter("accion"))) {%> 
+                <%} else if ("nuevoclass".equals(request.getAttribute("accion"))) {%> 
 
                 <div class="container">
                     <form method="POST" action="student?accion=grabarclass">

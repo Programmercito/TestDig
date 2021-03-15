@@ -1,0 +1,14 @@
+<component name="ArtifactManager">
+  <artifact type="ejb-jar" name="TestDigitalEJB:ejb">
+    <output-path>$PROJECT_DIR$/TestDigitalEJB/target</output-path>
+    <properties id="maven-jee-properties">
+      <options>
+        <module>TestDigitalEJB</module>
+        <packaging>ejb</packaging>
+      </options>
+    </properties>
+    <root id="archive" name="TestDigitalEJB-1.0-SNAPSHOT.jar">
+      <element id="artifact" artifact-name="TestDigitalEJB:ejb exploded" />
+    </root>
+  </artifact>
+</component>
