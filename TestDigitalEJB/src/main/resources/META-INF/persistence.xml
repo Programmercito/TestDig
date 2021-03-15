@@ -3,9 +3,9 @@
   <persistence-unit name="avisitosp" transaction-type="JTA">
     <provider>org.hibernate.jpa.HibernatePersistenceProvider</provider>
     <jta-data-source>jdbc/aviDS</jta-data-source>
-    <class>bo.digital.colege.entities.Class</class>
-    <class>bo.digital.colege.entities.Estudent</class>
-    <class>bo.digital.colege.entities.ClassEstudent</class>
+    <class>bo.digital.colege.interfaces.entities.Estudent</class>
+    <class>bo.digital.colege.interfaces.entities.Class</class>
+    <class>bo.digital.colege.interfaces.entities.ClassEstudent</class>
     <properties>
       <property name="hibernate.dialect" value="org.hibernate.dialect.PostgreSQLDialect"/>
     </properties>

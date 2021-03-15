@@ -1,6 +1,6 @@
 package bo.digital.colege.dao;
 
-import bo.digital.colege.entities.Class;
+import bo.digital.colege.entities.Classes;
 import bo.digital.colege.entities.ClassEstudent;
 import bo.digital.colege.entities.Estudent;
 import bo.digital.hibernate.conf.HibernateUtil;

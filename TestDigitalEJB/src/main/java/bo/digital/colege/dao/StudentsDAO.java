@@ -1,6 +1,6 @@
 package bo.digital.colege.dao;
 
-import bo.digital.colege.entities.Class;
+import bo.digital.colege.entities.Classes;
 import bo.digital.colege.entities.Estudent;
 import bo.digital.hibernate.conf.HibernateUtil;
 import java.util.List;
@@ -54,9 +54,9 @@ public class StudentsDAO {
         }
     }
 
-    public List<Class> loadClass(Long student) {
+    public List<Classes> loadClass(Long student) {
         try (Session session = HibernateUtil.getSessionFactory().openSession()) {
-            NativeQuery<Class> createNativeQuery = session.createNativeQuery("select * from class where code in (select code_class from class_students where student_id=?1 )", Class.class);
+            NativeQuery<Classes> createNativeQuery = session.createNativeQuery("select * from class where code in (select code_class from class_students where student_id=?1 )", Classes.class);
             createNativeQuery.setParameter(1, student);
             return createNativeQuery.getResultList();
 

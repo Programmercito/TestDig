@@ -11,7 +11,7 @@ import javax.persistence.Table;
  */
 @Entity
 @Table(name = "CLASS")
-public class Class {
+public class Classes {
 
     @Id
     @Column(name = "CODE", nullable = false, updatable = true, unique = true)

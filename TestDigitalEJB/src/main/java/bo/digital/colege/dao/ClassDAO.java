@@ -1,6 +1,6 @@
 package bo.digital.colege.dao;
 
-import bo.digital.colege.entities.Class;
+import bo.digital.colege.entities.Classes;
 import bo.digital.colege.entities.ClassStudentSearch;
 import bo.digital.colege.entities.Estudent;
 import bo.digital.hibernate.conf.HibernateUtil;
@@ -18,7 +18,7 @@ import org.hibernate.query.NativeQuery;
 @LocalBean
 public class ClassDAO {
 
-    public void remove(Class student) {
+    public void remove(Classes student) {
         try (Session session = HibernateUtil.getSessionFactory().openSession()) {
             session.beginTransaction();
             session.remove(student);
@@ -26,7 +26,7 @@ public class ClassDAO {
         }
     }
 
-    public void persist(Class student) {
+    public void persist(Classes student) {
         try (Session session = HibernateUtil.getSessionFactory().openSession()) {
             session.beginTransaction();
             session.save(student);
@@ -34,7 +34,7 @@ public class ClassDAO {
         }
     }
 
-    public void update(Class student) {
+    public void update(Classes student) {
         try (Session session = HibernateUtil.getSessionFactory().openSession()) {
             session.beginTransaction();
             session.update(student);
@@ -42,16 +42,16 @@ public class ClassDAO {
         }
     }
 
-    public Class find(Long id) {
+    public Classes find(Long id) {
         try (Session session = HibernateUtil.getSessionFactory().openSession()) {
-            Class estu = session.find(Class.class, id);
+            Classes estu = session.find(Classes.class, id);
             return estu;
         }
     }
 
-    public List<Class> loadAll() {
+    public List<Classes> loadAll() {
         try (Session session = HibernateUtil.getSessionFactory().openSession()) {
-            return session.createNativeQuery("select * from class", Class.class).getResultList();
+            return session.createNativeQuery("select * from class", Classes.class).getResultList();
         }
     }
 
