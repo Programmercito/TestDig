@@ -35,7 +35,7 @@
 
 
         <!-- Custom styles for this template -->
-        <link href="sticky-footer-navbar.css" rel="stylesheet">
+        <link href="resources/assets/css/sticky-footer-navbar.css" rel="stylesheet">
     </head>
     <body class="d-flex flex-column h-100">
 
@@ -43,7 +43,7 @@
             <!-- Fixed navbar -->
             <nav class="navbar navbar-expand-md navbar-dark fixed-top bg-dark">
                 <div class="container-fluid">
-                    <a class="navbar-brand" href="/TestDigitalWeb">Test System</a>
+                    <a class="navbar-brand" href="/TestDigitalWeb">Evaluate System</a>
                     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation">
                         <span class="navbar-toggler-icon"></span>
                     </button>
