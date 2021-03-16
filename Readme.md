@@ -1,5 +1,7 @@
 # Readme
 
+# Test App 2.0 
+
 ## Repository
 https://github.com/Programmercito/TestDig
 
@@ -26,19 +28,20 @@ In the EJB:
 4. Ear compiled from the app
 
 ## Instructions
-1. Install the script in a database called "school"
-2. Create a jndi on payara server called jdbc/aviDS
-3. Install the attached EAR in payara and run:
-http://localhost:8080/TestDigitalWeb/
+1. Create a database with "school" name 
+2. Install the script in a database , download from https://github.com/Programmercito/TestDig/blob/master/install/script.sql
+4. Create a jndi on payara server called jdbc/aviDS
+5. Install the attached EAR in payara and run:
+    http://localhost:8080/TestDigitalWeb/
 4. Enter through the menu the options indicated
 
 ## Architecture
 
 the application consists of two layers:
 1. Ejb application
-for data persistence
+   for data persistence
 2. Web application
-all the logic of the application validations and other
+   all the logic of the application validations and other
 
 ## Features
 
