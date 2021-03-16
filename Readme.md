@@ -1,6 +1,9 @@
 # Readme
 
 # Test App 2.0 
+## Download EAR file form :
+
+https://github.com/Programmercito/TestDig/files/6145668/TestDigitalEar-1.0-SNAPSHOT.zip
 
 ## Repository
 https://github.com/Programmercito/TestDig
@@ -33,6 +36,8 @@ In the EJB:
 4. Create a jndi on payara server called jdbc/aviDS
 5. Install the attached EAR in payara and run:
     http://localhost:8080/TestDigitalWeb/
+   or compile the package from maven with:
+   mvn clean package and deploy the ear file.
 4. Enter through the menu the options indicated
 
 ## Architecture
